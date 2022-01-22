@@ -5,30 +5,36 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    //Movement Tuning Variables
     [SerializeField] float mainThrust = 100f;
+    [SerializeField] float maxSpeed = 300f;
     [SerializeField] float rotationThrust = 1f;
-    [SerializeField] Transform rotationThreshold;
+    //Particle FX
+    [SerializeField] GameObject mainThruster;
+    [SerializeField] GameObject sideThruster;
+    [SerializeField] Transform mainThrusterPos;
+    [SerializeField] Transform leftThrusterPos;
+    [SerializeField] Transform rightThrusterPos;
+    //Audio
     [SerializeField] AudioClip mainEngine;
     Rigidbody myRigidbody;
     AudioSource audioSource;
+    //State
     bool isPlaying = false;
 
 
-    // Start is called before the first frame update
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
     }
-    private void Update()
-    {
-        
-    }
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         ProcessThrust();
         ProcessRotation();
+        Debug.Log(myRigidbody.velocity);
     }
 
     private void ProcessThrust()
@@ -36,7 +42,9 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             PlayThrustSFX();
-            myRigidbody.AddRelativeForce(Vector3.up *mainThrust * Time.deltaTime);
+            Instantiate(mainThruster, mainThrusterPos);
+   
+            myRigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         }
         else
         {
@@ -49,7 +57,8 @@ public class Movement : MonoBehaviour
     {
         if (!isPlaying)
         {
-            audioSource.PlayOneShot(mainEngine);
+            audioSource.clip = mainEngine;
+            audioSource.Play();
             isPlaying = true;
         }
 
@@ -57,13 +66,15 @@ public class Movement : MonoBehaviour
 
     private void ProcessRotation()
     {
-        if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) { return; }
-        if(Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) { return; }
+        if (Input.GetKey(KeyCode.D))
         {
+            Instantiate(sideThruster, leftThrusterPos);
             ApplyRotation(rotationThrust);
         }
         else if (Input.GetKey(KeyCode.A))
         {
+            Instantiate(sideThruster, rightThrusterPos);
             ApplyRotation(-rotationThrust);
         }
     }
