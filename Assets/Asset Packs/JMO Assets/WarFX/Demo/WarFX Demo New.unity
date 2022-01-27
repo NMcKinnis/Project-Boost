@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 0391a6a306ad2e948adf50d07b51688b, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: d776046d6ffb7a043a3e5aa48f33c2bf, type: 2}
 --- !u!196 &5
 NavMeshSettings:
   serializedVersion: 2
@@ -1423,7 +1423,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: 5d73f72c6be7d0440bbc9c87d4f718c0, type: 3}
-      propertyPath: CollisionModule.plane0
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4698,7 +4698,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 9e95c7b2183a4f345aaf86846f8f1918, type: 3}
-      propertyPath: CollisionModule.plane0
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []

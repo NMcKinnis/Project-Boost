@@ -87,6 +87,8 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
+        Debug.Log(collision.gameObject.transform.position);
         if (isTransitioning)
         {
             return;

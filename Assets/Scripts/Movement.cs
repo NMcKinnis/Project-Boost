@@ -34,7 +34,6 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
-        Debug.Log(myRigidbody.velocity);
     }
 
     private void ProcessThrust()
@@ -66,13 +65,14 @@ public class Movement : MonoBehaviour
 
     private void ProcessRotation()
     {
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)) { return; }
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) { return; }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             Instantiate(sideThruster, leftThrusterPos);
             ApplyRotation(rotationThrust);
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             Instantiate(sideThruster, rightThrusterPos);
             ApplyRotation(-rotationThrust);

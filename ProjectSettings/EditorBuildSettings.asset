@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Sandbox 1.unity
-    guid: fcdeca0bfe44fd74ab4c91469fe4cec5
+    path: Assets/Scenes/GetTheBelt.unity
+    guid: 6ddb0a53b204c77498fdf9c722250bed
   - enabled: 1
-    path: Assets/Scenes/Sandbox.unity
+    path: Assets/Scenes/FourShadowing.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/MagnanimousEruption.unity
+    guid: fcdeca0bfe44fd74ab4c91469fe4cec5
   m_configObjects: {}
